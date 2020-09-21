@@ -10,8 +10,8 @@
     }
 
     $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-    if($connection) {
-        print_r($connection);
+    if(!$connection) {
+        print_r("No connection to database...");
     }
 
 ?>
