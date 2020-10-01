@@ -25,6 +25,7 @@
                     while ($row = mysqli_fetch_assoc($select_all_posts)):
                         $post_title = $row['post_title'];
                         $post_author = $row['post_author'];
+                        $post_image = $row['post_image'];
                         $post_date = $row['post_date'];
                         $post_content = $row['post_content'];
                 ?>   
