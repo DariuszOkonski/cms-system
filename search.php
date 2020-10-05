@@ -33,6 +33,7 @@
                             echo "<h2>No Results</h2>";
                         } else {
                             // $query = "SELECT * FROM posts";
+                            // $select_all_posts = mysqli_query($connection, $query);
                             $select_all_posts = mysqli_query($connection, $query);
         
                             while ($row = mysqli_fetch_assoc($select_all_posts)):
