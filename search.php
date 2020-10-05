@@ -30,7 +30,7 @@
             
                         $count = mysqli_num_rows($search_query);
                         if($count == 0) {
-                            echo "<h4>No Result</h4>";
+                            echo "<h2>No Results</h2>";
                         } else {
                             // $query = "SELECT * FROM posts";
                             $select_all_posts = mysqli_query($connection, $query);
