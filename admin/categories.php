@@ -50,11 +50,6 @@
                         </div>   
 
                         <div class="col-xs-6">
-                            <?php 
-                                $query = "SELECT * FROM categories";
-                                $select_categories = mysqli_query($connection, $query);
-                            ?>
-
 
                             <table class="table table-bordered table-hover">
                                 <thead>
@@ -66,6 +61,10 @@
 
                                 <tbody>
                                     <?php 
+                                        // Find all categories query
+                                        $query = "SELECT * FROM categories";
+                                        $select_categories = mysqli_query($connection, $query);
+
                                         while($row = mysqli_fetch_assoc($select_categories)) {
                                             $cat_id = $row['cat_id'];
                                             $cat_title = $row['cat_title'];
@@ -74,7 +73,19 @@
                                             "<tr>
                                                 <td>$cat_id</td>
                                                 <td>$cat_title</td>
+                                                <td><a class='btn btn-primary' href='categories.php?delete={$cat_id}'>Delete</a></td>
                                             </tr>";
+                                        }
+                                    ?>
+
+                                    <?php 
+                                        // Delete single categorie
+                                        if(isset($_GET['delete'])) {
+                                            $the_cat_id = $_GET['delete'];
+
+                                            $query = "DELETE FROM categories WHERE cat_id = {$the_cat_id}";
+                                            $delete_query = mysqli_query($connection, $query);
+                                            header("Location: categories.php");
                                         }
                                     ?>
                                 </tbody>
