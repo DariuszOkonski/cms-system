@@ -47,6 +47,49 @@
                                     <input class="btn btn-primary" type="submit" name="submit" value="Add Category" >
                                 </div>
                             </form>
+
+                            <form action="categories.php" method="POST">
+                                <div class="form-group">
+                                    <label for="cat_title">Edit Category</label>
+
+                                    <?php 
+                                        // Edit Category
+                                        if(isset($_GET['edit'])) {
+                                            $cat_id = $_GET['edit'];
+
+                                            $query = "SELECT * FROM categories WHERE cat_id={$cat_id}";
+                                            $select_categories_id = mysqli_query($connection, $query);
+
+                                            $row = mysqli_fetch_assoc($select_categories_id);
+                                            $cat_title = $row['cat_title'];
+
+                                            if(isset($cat_title)) {
+                                                echo "
+                                                    <input 
+                                                        class='form-control' 
+                                                        type='text' 
+                                                        name='cat_title' 
+                                                        id='cat_title' 
+                                                        value='{$cat_title}'
+                                                        required
+                                                    >
+                                                ";
+                                            }
+                                        }
+                                    ?>
+
+                                    
+                                </div>
+                                <?php 
+                                    if(isset($cat_title)) {
+                                        echo "
+                                            <div class='form-group'>
+                                                <input class='btn btn-primary' type='submit' name='submit' value='Update Category' >
+                                            </div>
+                                        ";
+                                    }
+                                ?>
+                            </form>
                         </div>   
 
                         <div class="col-xs-6">
@@ -73,7 +116,8 @@
                                             "<tr>
                                                 <td>$cat_id</td>
                                                 <td>$cat_title</td>
-                                                <td><a class='btn btn-primary' href='categories.php?delete={$cat_id}'>Delete</a></td>
+                                                <td><a href='categories.php?delete={$cat_id}'>Delete</a></td>
+                                                <td><a href='categories.php?edit={$cat_id}'>Edit</a></td>
                                             </tr>";
                                         }
                                     ?>
