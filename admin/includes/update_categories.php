@@ -29,9 +29,6 @@
         <?php
             // update query
             if(isset($_POST['update_category'])) {
-                // print_r($_POST);
-                // print_r($cat_id);
-
                 $the_cat_title = $_POST['cat_title'];
                 $query = "UPDATE categories SET cat_title='{$the_cat_title}' WHERE cat_id={$cat_id}";
 
