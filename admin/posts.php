@@ -24,20 +24,20 @@
                         <?php 
                             if(isset($_GET['source'])) {
                                 $source = $_GET['source'];
-
-                                switch ($source) {
-                                    case 'value':
-                                        # code...
-                                        break;                                    
-                                    default:
-                                        include("includes/view_all_posts.php");
-                                        break;
-                                }
+                            } else {
+                                $source = '';
+                            }
+                            
+                            switch ($source) {
+                                case '34':
+                                    echo "Nice 34";
+                                    break;                                    
+                                default:
+                                    include("includes/view_all_posts.php");
+                                    break;
                             }
                         ?>
                         
-
-
                     </div>
                 </div>
                 <!-- /.row -->
