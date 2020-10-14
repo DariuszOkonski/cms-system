@@ -23,37 +23,37 @@
 
     <div class="form-group">
         <label for="title">Post Title</label>
-        <input type="text" class="form-control" name="title" >
+        <input type="text" class="form-control" name="title" required >
     </div>
 
     <div class="form-group">
         <label for="post_category">Post Category Id</label>
-        <input type="text" class="form-control" name="post_category_id" >
+        <input type="text" class="form-control" name="post_category_id" required >
     </div>
 
     <div class="form-group">
         <label for="author">Post Author</label>
-        <input type="text" class="form-control" name="author">
+        <input type="text" class="form-control" name="author" required >
     </div>
 
     <div class="form-group">
         <label for="post_status">Post Status</label>
-        <input type="text" class="form-control" name="post_status" >
+        <input type="text" class="form-control" name="post_status" required >
     </div>
 
     <div class="form-group">
         <label for="post_image">Post Image</label>
-        <input type="file" name="image" >
+        <input type="file" name="image" required >
     </div>
 
     <div class="form-group">
         <label for="post_tags">Post Tags</label>
-        <input type="text" class="form-control" name="post_tags" > 
+        <input type="text" class="form-control" name="post_tags" required > 
     </div>
 
     <div class="form-group">
         <label for="post_content">Post Content</label>
-        <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
+        <textarea required name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
     </div>
 
     <div class="form-group">
