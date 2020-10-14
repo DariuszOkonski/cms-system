@@ -10,7 +10,6 @@
             <th>Tags</th>
             <th>Comments</th>
             <th>Date</th>
-            <th></th>
         </tr>
     </thead>
 
@@ -42,6 +41,7 @@
                         <td>{$post_tags}</td>
                         <td>{$post_comment_count}</td>
                         <td>{$post_date}</td>
+                        <td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>
                         <td><a href='posts.php?delete={$post_id}'>Delete</a></td>
                     </tr>
                 ";
