@@ -19,6 +19,10 @@
         }
     }
 
+    if(isset($_POST['update_post'])) {
+        print_r($_POST);
+    }
+
 ?>
 
 <form action="" method="post" enctype="multipart/form-data">
@@ -29,8 +33,18 @@
     </div>
 
     <div class="form-group">
-        <label for="post_category">Post Category Id</label>
-        <input value="<?php echo $post_category_id; ?>" type="text" class="form-control" name="post_category_id" required >
+        <select class="form_control" name="post_category" id="post_category">
+            <?php 
+                $query = "SELECT * FROM categories";
+                $select_categories = mysqli_query($connection, $query);
+
+                while($row = mysqli_fetch_assoc($select_categories)){
+                    $cat_id = $row['cat_id'];
+                    $cat_title = $row['cat_title'];
+                    echo "<option value='$cat_id'>{$cat_title}</option>";
+                }
+            ?>
+        </select>
     </div>
 
     <div class="form-group">
@@ -46,8 +60,9 @@
     <!-- TODO set image value -->
     <div class="form-group">
         <label for="post_image">Post Image</label>
-        <label for="post_image"> => <?php echo $post_image ?></label>
         <input type="file" name="image" required >
+        <br>
+        <img width="100" src="../images/<?php echo $post_image ?>" alt="">
     </div>
 
     <div class="form-group">
@@ -61,6 +76,6 @@
     </div>
 
     <div class="form-group">
-        <input class="btn btn-primary" type="submit" value="Edit Post" name="create_post">
+        <input class="btn btn-primary" type="submit" value="Edit Post" name="update_post">
     </div>
 </form>
