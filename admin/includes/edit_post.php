@@ -37,10 +37,18 @@
 
         move_uploaded_file($post_image_temp, "../images/$post_image");
 
+        if(empty($post_image)) {
+            $query = "SELECT * FROM posts WHERE post_id = $the_post_id";
+            $select_image = mysqli_query($connection, $query);
+            while($row = mysqli_fetch_assoc($select_image)) {
+                $post_image = $row['post_image'];
+            }
+        }
+
         $query = "UPDATE posts SET post_title='{$post_title}', post_category_id='{$post_category_id}', post_date = now(), post_author='{$post_author}', post_status='{$post_status}', post_tags='{$post_tags}', post_content='{$post_content}', post_image='{$post_image}' WHERE post_id = {$the_post_id}";
 
-        $update_result = mysqli_query($connection, $query);
-        comfirmQuery($update_result);
+        $update_post = mysqli_query($connection, $query);
+        comfirmQuery($update_post);
         header("Location: posts.php");
     }
 
@@ -83,7 +91,7 @@
     <!-- TODO set image value -->
     <div class="form-group">
         <label for="image">Post Image</label>
-        <input type="file" name="image" required >
+        <input type="file" name="image" >
         <br>
         <img width="100" src="../images/<?php echo $post_image ?>" alt="">
     </div>
