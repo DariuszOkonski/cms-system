@@ -2,6 +2,7 @@
 
     if(isset($_GET['p_id'])) {
         $the_post_id = $_GET['p_id'];
+        $temp_post_image = "";
 
         $query = "SELECT * FROM posts WHERE post_id = {$the_post_id}";  
         $select_posts_by_id = mysqli_query($connection, $query);
@@ -16,12 +17,23 @@
             $post_comment_count = $row['post_comment_count'];
             $post_date = $row['post_date'];
             $post_content = $row['post_content'];
+
+            $temp_post_image = $post_image;
         }
     }
 
-    if(isset($_POST['update_post'])) {
-        print_r($_POST);
-    }
+    // if(isset($_POST['update_post'])) {
+    //     // print_r($_POST);
+
+    //     $post_image = $_FILES['image']['name'];
+    //     // $post_image_temp = $_FILES['image']['tmp_name'];
+
+    //     if($post_image === "") {
+    //         $post_image = $temp_post_image;
+    //     }
+
+    //     print_r($post_image);
+    // }
 
 ?>
 
@@ -37,6 +49,8 @@
             <?php 
                 $query = "SELECT * FROM categories";
                 $select_categories = mysqli_query($connection, $query);
+
+                comfirmQuery($select_categories);
 
                 while($row = mysqli_fetch_assoc($select_categories)){
                     $cat_id = $row['cat_id'];
@@ -60,7 +74,7 @@
     <!-- TODO set image value -->
     <div class="form-group">
         <label for="post_image">Post Image</label>
-        <input type="file" name="image" required >
+        <input type="file" name="image" >
         <br>
         <img width="100" src="../images/<?php echo $post_image ?>" alt="">
     </div>
