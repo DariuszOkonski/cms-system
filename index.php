@@ -28,7 +28,7 @@
                         $post_author = $row['post_author'];
                         $post_image = $row['post_image'];
                         $post_date = $row['post_date'];
-                        $post_content = $row['post_content'];
+                        $post_content = substr($row['post_content'], 0, 100) . "...";
                 ?>   
                     <h2>
                         <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a>
