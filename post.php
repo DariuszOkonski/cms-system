@@ -22,9 +22,9 @@
                     if(!isset($_GET['p_id']))
                         header('Location: index.php');
 
-                    $post_id = $_GET['p_id'];
+                    $the_post_id = $_GET['p_id'];
 
-                    $query = "SELECT * FROM posts WHERE post_id = $post_id";
+                    $query = "SELECT * FROM posts WHERE post_id = $the_post_id";
                     $select_all_posts = mysqli_query($connection, $query);
 
                     while ($row = mysqli_fetch_assoc($select_all_posts)):
