@@ -34,21 +34,24 @@
     </div>
 
     <div class="form-group">
-        <select name="post_category_id" id="">
-            <?php 
-                $query = "SELECT * FROM categories";
-                $select_categories = mysqli_query($connection, $query);
-                
-                comfirmQuery($select_categories);
-                
-                while($row = mysqli_fetch_assoc($select_categories)) {
-                    $cat_id = $row['cat_id'];
-                    $cat_title = $row['cat_title'];                    
+        <label for="category">Post Category</label>
+        <div>
+            <select name="post_category_id" id="category">
+                <?php 
+                    $query = "SELECT * FROM categories";
+                    $select_categories = mysqli_query($connection, $query);
                     
-                    echo "<option value='{$cat_id}'>{$cat_title}</option>";
-                }
-                ?>
-        </select>
+                    comfirmQuery($select_categories);
+                    
+                    while($row = mysqli_fetch_assoc($select_categories)) {
+                        $cat_id = $row['cat_id'];
+                        $cat_title = $row['cat_title'];                    
+                        
+                        echo "<option value='{$cat_id}'>{$cat_title}</option>";
+                    }
+                    ?>
+            </select>
+        </div>
     </div>
 
     <div class="form-group">
