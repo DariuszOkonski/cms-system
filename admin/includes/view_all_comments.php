@@ -10,7 +10,6 @@
             <th>Date</th>
             <th>Approve</th>
             <th>Unapprove</th>
-            <th>Edit</th>
             <th>Delete</th>
         </tr>
     </thead>
@@ -55,10 +54,6 @@
                         </td>
                         <td>
                             <a href='#'>Unapprove</a>
-                        </td>
-                        
-                        <td>
-                            <a href='#'>Edit</a>
                         </td>
                         <td>
                             <a href='#'>Delete</a>
