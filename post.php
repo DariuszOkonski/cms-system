@@ -18,7 +18,6 @@
 
             <!-- First Blog Post -->
                 <?php 
-
                     if(!isset($_GET['p_id']))
                         header('Location: index.php');
 
@@ -29,6 +28,7 @@
 
                     while ($row = mysqli_fetch_assoc($select_all_posts)):
                         $post_id = $row['post_id'];
+                        
                         $post_title = $row['post_title'];
                         $post_author = $row['post_author'];
                         $post_image = $row['post_image'];
@@ -52,14 +52,33 @@
                     <?php endwhile; ?>   
 
 
+                <?php 
+                    
+                    if(isset($_POST['create_comment'])) {
+                        print_r($_POST);
+                    }
+                ?>
+
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form">
+                    <form action="" method="post" role="form">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <label for="author">Author:</label>
+                            <input type="text" class="form-control" name="comment_author" id="author" required >
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="comment_email" id="email" >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comment">Your Comment:</label>
+                            <textarea class="form-control" rows="3" name="comment_content" id="comment" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" name="create_comment" >Submit</button>
                     </form>
                 </div>
 
