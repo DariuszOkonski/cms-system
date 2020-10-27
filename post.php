@@ -55,7 +55,14 @@
                 <?php 
                     
                     if(isset($_POST['create_comment'])) {
-                        print_r($_POST);
+                        $the_post_id = $_GET['p_id'];
+                        $comment_author = $_POST['comment_author'];
+                        $comment_email = $_POST['comment_email'];
+                        $comment_content = $_POST['comment_content'];
+                        
+                        $query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) VALUES($the_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved' , now())";
+
+                        
                     }
                 ?>
 
@@ -70,7 +77,7 @@
                         
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" name="comment_email" id="email" >
+                            <input type="email" class="form-control" name="comment_email" id="email" required >
                         </div>
                         
                         <div class="form-group">
