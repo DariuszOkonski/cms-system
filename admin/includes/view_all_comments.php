@@ -39,6 +39,15 @@
                 //     $cat_title = $row['cat_title'];
                 // }
 
+                $post_query = "SELECT * FROM posts WHERE post_id = $comment_post_id";
+                $select_post_id_query = mysqli_query($connection, $post_query);
+
+                while($row = mysqli_fetch_assoc($select_post_id_query)) {
+                    $post_id = $row['post_id'];
+                    $post_title = $row['post_title'];
+                }
+
+
                 echo "
                     <tr>
                         <td>{$comment_id}</td>
@@ -46,7 +55,9 @@
                         <td>{$comment_content}</td>
                         <td>{$comment_email}</td>
                         <td>{$comment_status}</td>
-                        <td>In Response to</td>
+                        <td>
+                            <a href='../post.php?p_id=$post_id'>{$post_title}</a>
+                        </td>
                         <td>{$comment_date}</td>
 
                         <td>
